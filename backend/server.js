@@ -1,22 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-
-// create express app
-const app = express();
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
-
-// parse requests of content-type - application/json
-app.use(bodyParser.json())
-const dbConfig = require('./dbconfig.js');
-const mongoose = require('mongoose');
-
-mongoose.Promise = global.Promise;
-
+var express    = require('express');        // call express
+var app        = express();                 // define our app using express
+var bodyParser = require('body-parser');
+var mongoose   = require('mongoose');
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+require('./routes/user/userRoutes.js')(app);
 // Connecting to the database
+const dbConfig = require('./dbconfig.js');
+
 mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex:true
 }).then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {
