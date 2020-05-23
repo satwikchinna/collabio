@@ -5,6 +5,8 @@ const UserSchema = mongoose.Schema({
     password:String,
     dob:Date,
     email:String,
+    owner_of:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }],
+    working_on:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }]
 
 }, {
     timestamps: true

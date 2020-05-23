@@ -6,10 +6,11 @@ exports.create = (req, res) => {
     // Create a Note
     console.log(req.body)
     const user = new User({
-        name:req.body.name,
+    name:req.body.name,
     password:req.body.password,
     dob:req.body.dob,
     email:req.body.email,
+
     });
 
     // Save Note in the database
@@ -91,7 +92,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    User.findByIdAndRemove(req.params.noteId)
+    User.findByIdAndRemove(req.params.userId)
     .then(user => {
         if(!user) {
             return res.status(404).send({
