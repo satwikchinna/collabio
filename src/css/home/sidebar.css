@@ -1,0 +1,16 @@
+.sidebar {
+    max-width: 20vw;
+    border: 1px solid #1A1A1D;
+    height: 100vh;
+    background-color: #1A1A1D;
+    
+    color: white;
+
+  }
+  .sidebarlist {
+
+    height: 10vh;
+    color: white;
+    
+
+  }

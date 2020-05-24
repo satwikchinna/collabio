@@ -94,8 +94,8 @@ exports.update = (req, res) => {
     }
 
     // Find note and update it with the request body
-    var project = new Project( Project.findById(req.params.projectId));
-    Feature.findByIdAndUpdate(req.params.featureId, {
+    var project = new Project( Project.findById(req.body.projectId));
+    Feature.findByIdAndUpdate(req.body.featureId, {
         title: req.body.title,
         project:project,
         deadline:req.body.deadline
