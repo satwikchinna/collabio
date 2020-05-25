@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('./userModel');
-const Features = require('./featureModel');
+const Feature = require('./featureModel');
 
 
 const ProjectSchema = mongoose.Schema({
@@ -13,9 +13,9 @@ const ProjectSchema = mongoose.Schema({
     team: [User.schema],
     features: [{
         type: mongoose.Types.ObjectId,
-        ref:'Features'
+        ref:'Feature'
     }],
-    features:[Features.schema],
+    features:[Feature.schema],
 
     deadline:Date,
     owner: {type:mongoose.Types.ObjectId,

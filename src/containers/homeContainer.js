@@ -1,12 +1,20 @@
 import React from 'react';
-import Navbarcomponent from '../components/navbarComponent';
-import Sidebar from '../components/sidenavbarComponent';
+import ResponsiveDrawer from '../components/sidenavbarComponent';
+import Datagrid from '../components/datagridComponent';
 function Home() {
   return (
+    <>
    <div>
-      <Navbarcomponent/>
-       < Sidebar/>
+      
+      <Datagrid/>
+       < ResponsiveDrawer/>
+      
+       
     </div>
+    
+      
+   
+    </>
   );
 }
 

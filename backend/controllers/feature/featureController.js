@@ -38,7 +38,6 @@ Project.findById(req.body.projectId.replace(/^"|"$/g, ''), function(err,project)
 
         const feature = new Feature({
             title: req.body.title,
-            project:projectres,
             deadline:req.body.deadline,
             tasks:tasksres,
             iscompleted:false

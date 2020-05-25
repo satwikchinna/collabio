@@ -4,7 +4,7 @@ import { FcCollaboration } from 'react-icons/fc';
 
 function Navbarcomponent() {
   return (
-    <Navbar style={{backgroundColor:'#1A1A1D'}} collapseOnSelect expand="lg"  variant="dark">
+    <Navbar fixed="top" style={{backgroundColor:'#1A1A1D'}} collapseOnSelect expand="lg"  variant="dark">
   <Navbar.Brand  href="#home"><h3>COLLAB.IO  <FcCollaboration/></h3></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">

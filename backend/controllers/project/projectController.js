@@ -11,7 +11,6 @@ var featuresres = [];
                     var featureres = new Feature({
                         _id:feature._id,
                         title:feature.title ,
-                        project:feature.project,
                        deadline:feature.deadline,
                         tasks:feature.tasks,
                         iscompleted:feature.iscompleted

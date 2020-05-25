@@ -1,16 +1,19 @@
 .sidebar {
-    max-width: 20vw;
+    max-width: 30vw;
     border: 1px solid #1A1A1D;
     height: 100vh;
     background-color: #1A1A1D;
     
     color: white;
+    position:fixed;
+ 
 
   }
   .sidebarlist {
 
     height: 10vh;
     color: white;
+    border:89px solid black
     
 
   }
