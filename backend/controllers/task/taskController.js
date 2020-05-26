@@ -38,7 +38,7 @@ var userres ;
 };
 
 exports.findAll = (req, res) => {
-    Task.find().populate('assigned_to').exec(function (err, tasks) {
+    Task.find().exec(function (err, tasks) {
     if (err) return (err);
     res.send(tasks);
     // prints "The author is Ian Fleming"

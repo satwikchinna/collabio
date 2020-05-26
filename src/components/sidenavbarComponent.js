@@ -18,7 +18,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const drawerWidth = 300;
+const drawerWidth = 270;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,17 +28,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       flexShrink: 0,
-      backgroundColor:'blue'
+      backgroundColor:'deeppurple'
     },
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      backgroundColor:'blue'
+      backgroundColor:'deeppurple'
     },
     [theme.breakpoints.down('xs')]: {
-      backgroundColor:'blue',
+      backgroundColor:'deeppurple',
       position:"sticky-top"
       
     },
@@ -66,9 +66,11 @@ const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
 
   drawerPaper: {
+   
     width: drawerWidth,
-    backgroundColor:'blue',
+    backgroundColor:'#4156b5',
     color:'white'
+  
 
   },
   content: {
@@ -76,7 +78,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-
+const styles = {
+  outline:'none'
+}
 function ResponsiveDrawer(props) {
   const { window } = props;
   const classes = useStyles();
@@ -93,7 +97,7 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem  button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -120,6 +124,7 @@ function ResponsiveDrawer(props) {
         <Toolbar>
       
           <IconButton
+          style = {styles}
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -132,7 +137,7 @@ function ResponsiveDrawer(props) {
           </IconButton>
           <Typography variant="h6" className={classes.title} noWrap>
 COLLAB.IO          </Typography>
-<IconButton className={classes.logoutButton} aria-label="logout" edge="end" color="inherit">
+<IconButton style = {styles}className={classes.logoutButton} aria-label="logout" edge="end" color="inherit">
             <ExitToAppIcon />
           </IconButton>
         </Toolbar>

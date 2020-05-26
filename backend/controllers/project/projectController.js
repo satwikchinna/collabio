@@ -24,9 +24,9 @@ var featuresres = [];
 }
 
 var teamres = [];
-    for( i=0;i<req.body.features.length;i++){
+    for( i=0;i<req.body.team.length;i++){
         User.findById(req.body.team[i].replace(/^"|"$/g, ''), function(err,member){
-            console.log(member);
+            
                     var memberres = new User({
                         _id:member._id,
                         name:member.name ,
@@ -67,6 +67,7 @@ User.findById(req.body.userId.replace(/^"|"$/g, ''), function(err,owner){
     
         });
         project.save(function (err) {
+            res.send("successful")
            
         });
 

@@ -1,6 +1,9 @@
 .projects{
-    position:relative;
-    width: 70vw;
-    float:right;
+      margin: 0px;
+      top: center;
+      right: center;
+      bottom: center;      
+     left: center;
+      position: fixed;
 
 }

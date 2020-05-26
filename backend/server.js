@@ -2,11 +2,13 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
+var cors = require('cors');
+app.use(cors());
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 require('./routes/user/userRoutes.js')(app);
+require('./routes/project/projectRoutes.js')(app);
 require('./routes/task/taskRoutes.js')(app);
 require('./routes/feature/featureRoutes.js')(app);
 // Connecting to the database
@@ -22,6 +24,9 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 // listen for requests
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+
+app.listen(2345, () => {
+    console.log("Server is listening on port 3000" );
 });
+app.get('/', (req, res) => res.send('Hello World!'))
+

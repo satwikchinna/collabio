@@ -7,6 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import WorkIcon from '@material-ui/icons/Work';
+import {useState,useEffect} from 'react';
+import Loading from '../components/loadingComponent';
 
 
 
@@ -14,9 +16,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.down('xs')]: {
       width: '95%',
-      marginTop:'6%'
+      marginTop:'10%'
     },
-    width: '74%',
+    width: '78%',
+    marginTop:'5%',
     backgroundColor: theme.palette.background.default,
     float:'right',
     fontWeight:"fontWeightBold"
@@ -24,77 +27,57 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
-var users =[
-  {
-    name: '😃 William',
-    location: '🏘️ Lagos',
-    car: '🚘 Honda'
-  },
-  {
-    name: '😃 Chris',
-    location: '🏘️ Moon',
-    car: '🚘 Tesla'
-  },
-  {
-    name: ' 😃 Rose',
-    location: '🏘️ Venice',
-    car: '🚘 Pagani'
-  },
-  {
-    name: '😃 Mike',
-    location: '🏘️ Milan',
-    car: '🚘 Rolls Royce'
-  },
-  {
-    name: '😃 Liz',
-    location: '🏘️ Beirut',
-    car: '🚘 Mercedes'
-  },{
-    name: '😃 William',
-    location: '🏘️ Lagos',
-    car: '🚘 Honda'
-  },
-  {
-    name: '😃 Chris',
-    location: '🏘️ Moon',
-    car: '🚘 Tesla'
-  },
-  {
-    name: ' 😃 Rose',
-    location: '🏘️ Venice',
-    car: '🚘 Pagani'
-  },
-  {
-    name: '😃 Mike',
-    location: '🏘️ Milan',
-    car: '🚘 Rolls Royce'
-  },
-  {
-    name: '😃 Liz',
-    location: '🏘️ Beirut',
-    car: '🚘 Mercedes'
-  }
-];
+
 
 function Datagrid() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState([]);
+  useEffect(() => {
+    setLoading(true);
+    fetch("http://192.168.43.154:2345/tasks")
+    .then(data => {
+      return data.json();
+    }).then(data => {
+      console.log(data)
+      setProjects(data);
+      setLoading(false);
+      })
+      .catch(err => {
+        console.log(123123);
+      });
+  }, []);
+  
   const classes = useStyles();
+  if(loading){
+    return(
+      <div className="projects">
+ <Loading/>
+   </div>
+    );
+  }
+  else{
     return (
       <div className="users">
       
       <List className={classes.root}>
-      {users.map((user, index) => (  
+      {projects.map((project, index) => ( 
+        <div key={index}> 
       <ListItem button>
         <ListItemAvatar>
           <Avatar>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar >
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+        <ListItemText primary={project.title} secondary="Jan 9, 2014" />
+       
       </ListItem>
+      </div>
        ))}
       </List>
      
       </div>
     );
-  }
+  }}
+
+  
   export default Datagrid;
